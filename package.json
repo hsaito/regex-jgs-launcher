@@ -4,6 +4,18 @@
   "author": "Hideki Saito",
   "displayName": "JGS Regex Launcher",
   "description": "An unofficial launcher to launch JGSoft regex software",
+  "keywords": [
+    "regex",
+    "regexbuddy",
+    "regexmagic",
+    "jgsoft",
+    "launcher",
+    "external tools"
+  ],
+  "homepage": "https://github.com/hsaito/regex-jgs-launcher#readme",
+  "bugs": {
+    "url": "https://github.com/hsaito/regex-jgs-launcher/issues"
+  },
   "icon": "logo.png",
   "version": "0.1.0",
   "license": "MIT",
