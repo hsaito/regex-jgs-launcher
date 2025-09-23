@@ -9,6 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - No changes yet.
 
+## [0.1.1] - 2025-09-23
+
+### Changed
+- Bumped version to `0.1.1`.
+- README: updated version badge; minor formatting tweaks.
+
+### Fixed
+- Packaging: ensured only necessary files are included via `.vscodeignore` (no functional changes).
+
 ## [0.1.0] - 2025-09-23
 
 ### Added
@@ -35,7 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Default keybindings and settings for paths, args, preArgs, and enable toggles.
 - Editor context and title menu entries when there is a selection.
 
-<!-- Compare Links (will work once tags are created) -->
-[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.0.1...v0.1.0
 [0.0.1]: https://github.com/hsaito/regex-jgs-launcher/releases/tag/v0.0.1

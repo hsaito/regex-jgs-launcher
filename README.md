@@ -3,7 +3,7 @@
 This VS Code extension lets you quickly launch JGsoft tools — RegexBuddy and RegexMagic — directly from VS Code.
 
 **Publisher:** Hideki Saito  
-**Version:** 0.1.0  
+**Version:** 0.1.1  
 **License:** MIT
 
 ## Features
