@@ -8,21 +8,21 @@ This VS Code extension lets you quickly launch JGsoft tools — RegexBuddy and R
 
 ## Features
 
-• Launch RegexBuddy or RegexMagic with a single command or keyboard shortcut
-• Pass context from the active editor: selection text, file path, folder, and current line
-• Customize executable paths and argument templates with placeholders
-• Automatically applies `-appname "Visual Studio Code"`; the clipboard flags are configurable settings with sensible defaults
-• Commands are only enabled when the respective tool integration is enabled in settings
+- Launch RegexBuddy or RegexMagic with a single command or keyboard shortcut
+- Pass context from the active editor: selection text, file path, folder, and current line
+- Customize executable paths and argument templates with placeholders
+- Automatically applies `-appname "Visual Studio Code"`; the clipboard flags are configurable settings with sensible defaults
+- Commands are only enabled when the respective tool integration is enabled in settings
 
  
 
 ## Requirements
 
-• Windows with RegexBuddy 4 and/or RegexMagic 2 installed
-• Defaults used if present:
+- Windows with RegexBuddy 4 and/or RegexMagic 2 installed
+- Defaults used if present:
 	- RegexBuddy: C:\\Program Files\\Just Great Software\\RegexBuddy 4\\RegexBuddy4.exe
 	- RegexMagic: C:\\Program Files\\Just Great Software\\RegexMagic 2\\RegexMagic2.exe
-• You can override paths in Settings (see below)
+- You can override paths in Settings (see below)
 
 ## Extension Settings
 
