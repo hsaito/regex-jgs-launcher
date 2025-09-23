@@ -3,7 +3,7 @@
   "publisher": "Hideki Saito",
   "displayName": "JGS Regex Launcher",
   "description": "An unofficial launcher to launch JGSoft regex software",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -22,18 +22,18 @@
       {
         "command": "regex-jgs-launcher.launchRegexBuddy",
         "title": "Launch RegexBuddy",
-        "category": "Regex JGsoft",
+        "category": "JGS Regex Launcher",
         "enablement": "config.regex-jgs-launcher.regexBuddy.enabled"
       },
       {
         "command": "regex-jgs-launcher.launchRegexMagic",
         "title": "Launch RegexMagic",
-        "category": "Regex JGsoft",
+        "category": "JGS Regex Launcher",
         "enablement": "config.regex-jgs-launcher.regexMagic.enabled"
       }
     ],
     "configuration": {
-      "title": "Regex JGsoft Launcher",
+      "title": "JGS Regex Launcher",
       "properties": {
         "regex-jgs-launcher.regexBuddy.enabled": {
           "type": "boolean",
@@ -77,8 +77,8 @@
         "regex-jgs-launcher.regexMagic.preArgs": {
           "type": "array",
           "items": { "type": "string" },
-          "default": ["-getfromclipboard", "-putonclipboard"],
-          "markdownDescription": "Arguments inserted before other args for RegexMagic. Defaults to `-getfromclipboard` and `-putonclipboard`."
+          "default": ["-sampleclipboard", "-putonclipboard"],
+          "markdownDescription": "Arguments inserted before other args for RegexMagic. Defaults to `-sampleclipboard` and `-putonclipboard`."
         }
       }
     },
