@@ -1,9 +1,14 @@
 {
-  "name": "Regex JGS Launcher",
+  "name": "regex-jgs-launcher",
   "publisher": "Hideki Saito",
-  "displayName": "regex-jgs-launcher",
+  "displayName": "JGS Regex Launcher",
   "description": "An unofficial launcher to launch JGSoft regex software",
   "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hsaito/regex-jgs-launcher.git"
+  },
   "engines": {
     "vscode": "^1.104.0"
   },
