@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Extension Icon Generator</title>
+</head>
+<body>
+    <canvas id="canvas" width="128" height="128" style="border: 1px solid #ccc;"></canvas>
+    <br><br>
+    <button onclick="downloadIcon()">Download Icon</button>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Create gradient background
+        const gradient = ctx.createLinearGradient(0, 0, 128, 128);
+        gradient.addColorStop(0, '#4A90E2');
+        gradient.addColorStop(1, '#357ABD');
+        
+        // Fill background
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 128, 128);
+        
+        // Add border radius effect
+        ctx.globalCompositeOperation = 'destination-in';
+        ctx.beginPath();
+        ctx.roundRect(0, 0, 128, 128, 16);
+        ctx.fill();
+        ctx.globalCompositeOperation = 'source-over';
+        
+        // Add regex symbol
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 32px monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
+        // Draw .*
+        ctx.fillText('.*', 64, 45);
+        
+        // Draw JGS
+        ctx.font = 'bold 16px sans-serif';
+        ctx.fillText('JGS', 64, 90);
+        
+        function downloadIcon() {
+            const link = document.createElement('a');
+            link.download = 'icon.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>
