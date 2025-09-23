@@ -1,0 +1,148 @@
+{
+  "name": "Regex JGS Launcher",
+  "publisher": "Hideki Saito",
+  "displayName": "regex-jgs-launcher",
+  "description": "An unofficial launcher to launch JGSoft regex software",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.104.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "regex-jgs-launcher.launchRegexBuddy",
+        "title": "Launch RegexBuddy",
+        "category": "Regex JGsoft",
+        "enablement": "config.regex-jgs-launcher.regexBuddy.enabled"
+      },
+      {
+        "command": "regex-jgs-launcher.launchRegexMagic",
+        "title": "Launch RegexMagic",
+        "category": "Regex JGsoft",
+        "enablement": "config.regex-jgs-launcher.regexMagic.enabled"
+      }
+    ],
+    "configuration": {
+      "title": "Regex JGsoft Launcher",
+      "properties": {
+        "regex-jgs-launcher.regexBuddy.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable RegexBuddy integration"
+        },
+        "regex-jgs-launcher.regexBuddy.path": {
+          "type": "string",
+          "default": "C:\\Program Files\\Just Great Software\\RegexBuddy 4\\RegexBuddy4.exe",
+          "description": "Full path to RegexBuddy executable (defaults to C:\\Program Files\\Just Great Software\\RegexBuddy 4\\RegexBuddy4.exe)."
+        },
+        "regex-jgs-launcher.regexBuddy.args": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "markdownDescription": "Arguments template array for RegexBuddy. You can use placeholders: {regex}, {file}, {dir}, {line}, {selection}. Each item is one argument entry."
+        },
+        "regex-jgs-launcher.regexBuddy.preArgs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["-getfromclipboard", "-putonclipboard"],
+          "markdownDescription": "Arguments inserted before other args for RegexBuddy. Defaults to `-getfromclipboard` and `-putonclipboard`."
+        },
+        "regex-jgs-launcher.regexMagic.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable RegexMagic integration"
+        },
+        "regex-jgs-launcher.regexMagic.path": {
+          "type": "string",
+          "default": "C:\\Program Files\\Just Great Software\\RegexMagic 2\\RegexMagic2.exe",
+          "description": "Full path to RegexMagic executable (defaults to C:\\Program Files\\Just Great Software\\RegexMagic 2\\RegexMagic2.exe)."
+        },
+        "regex-jgs-launcher.regexMagic.args": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "markdownDescription": "Arguments template array for RegexMagic. You can use placeholders: {regex}, {file}, {dir}, {line}, {selection}. Each item is one argument entry."
+        }
+        ,
+        "regex-jgs-launcher.regexMagic.preArgs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["-getfromclipboard", "-putonclipboard"],
+          "markdownDescription": "Arguments inserted before other args for RegexMagic. Defaults to `-getfromclipboard` and `-putonclipboard`."
+        }
+      }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "command": "regex-jgs-launcher.launchRegexBuddy",
+          "when": "editorHasSelection && config.regex-jgs-launcher.regexBuddy.enabled",
+          "group": "navigation@99"
+        },
+        {
+          "command": "regex-jgs-launcher.launchRegexMagic",
+          "when": "editorHasSelection && config.regex-jgs-launcher.regexMagic.enabled",
+          "group": "navigation@100"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "regex-jgs-launcher.launchRegexBuddy",
+          "when": "editorHasSelection && config.regex-jgs-launcher.regexBuddy.enabled",
+          "group": "navigation@99"
+        },
+        {
+          "command": "regex-jgs-launcher.launchRegexMagic",
+          "when": "editorHasSelection && config.regex-jgs-launcher.regexMagic.enabled",
+          "group": "navigation@100"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "regex-jgs-launcher.launchRegexBuddy",
+        "key": "ctrl+alt+shift+b",
+        "when": "editorFocus && config.regex-jgs-launcher.regexBuddy.enabled"
+      },
+      {
+        "command": "regex-jgs-launcher.launchRegexBuddy",
+        "key": "ctrl+alt+shift+b",
+        "when": "findWidgetVisible && config.regex-jgs-launcher.regexBuddy.enabled"
+      },
+      {
+        "command": "regex-jgs-launcher.launchRegexMagic",
+        "key": "ctrl+alt+shift+m",
+        "when": "editorFocus && config.regex-jgs-launcher.regexMagic.enabled"
+      },
+      {
+        "command": "regex-jgs-launcher.launchRegexMagic",
+        "key": "ctrl+alt+shift+m",
+        "when": "findWidgetVisible && config.regex-jgs-launcher.regexMagic.enabled"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.104.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@typescript-eslint/eslint-plugin": "^8.42.0",
+    "@typescript-eslint/parser": "^8.42.0",
+    "eslint": "^9.34.0",
+    "typescript": "^5.9.2",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
