@@ -5,11 +5,11 @@ This VS Code extension lets you quickly launch JGsoft to**Quick start:**
 1. **First-run onboarding**: When you first use any regex command, you'll see a welcome dialog to enable RegexBuddy and/or RegexMagic. You can also enable them later in Settings (`regex-jgs-launcher.regexBuddy.enabled`, `regex-jgs-launcher.regexMagic.enabled`) or use the "Configure Integrations" command.
 2. **Set executable paths**: If the default path does not exist, you will be prompted to locate the .exe the first time you run a command.
 3. **Customize arguments**: Optionally define argument templates using placeholders in Settings.
-4. **Use the tools**: Select text or invoke a command and enter a regex when prompted. Use the "RegexBuddy: Use Selection as Sample" command to send selection as sample text via `-sampleclipboard`.
+4. **Use the tools**: Select text or invoke a command and enter a regex when prompted. Use the "RegexBuddy: Use Selection as Sample" command to send selection as sample text via `-testclipboard`.
 5. **Reset if needed**: Use "Reset All Settings" command to restore factory defaults.RegexBuddy and RegexMagic — directly from VS Code.
 
 **Publisher:** Hideki Saito  
-**Version:** 0.2.0  
+**Version:** 0.2.1  
 **License:** MIT
 
 ## Features
@@ -41,7 +41,7 @@ This extension contributes the following settings:
 * `regex-jgs-launcher.regexMagic.args`: Array of argument template strings for RegexMagic.
 * `regex-jgs-launcher.regexBuddy.preArgs`: Array of arguments inserted before other args for RegexBuddy (default: `-getfromclipboard`, `-putonclipboard`).
 * `regex-jgs-launcher.regexMagic.preArgs`: Array of arguments inserted before other args for RegexMagic (default: `-getfromclipboard`, `-putonclipboard`).
-* `regex-jgs-launcher.regexBuddy.sample.preArgs`: Array of arguments inserted before other args for RegexBuddy Sample mode (default: `-sampleclipboard`, `-putonclipboard`).
+* `regex-jgs-launcher.regexBuddy.sample.preArgs`: Array of arguments inserted before other args for RegexBuddy Sample mode (default: `-testclipboard`, `-putonclipboard`).
 * `regex-jgs-launcher.regexBuddy.sample.args`: Array of argument template strings for RegexBuddy Sample mode.
 * `regex-jgs-launcher.regexBuddy.enabled`: Enable/disable RegexBuddy integration (default: false).
 * `regex-jgs-launcher.regexMagic.enabled`: Enable/disable RegexMagic integration (default: false).
@@ -62,6 +62,7 @@ This extension places the regex on the clipboard before launching the external t
 
 ## Release Notes
 
+- **0.2.1**: Patch release — Fixed RegexBuddy sample mode to use correct `-testclipboard` flag instead of `-sampleclipboard`.
 - **0.2.0**: Major feature release — Added first-run onboarding flow, comprehensive settings reset command with confirmation dialog, RegexBuddy sample mode support, enhanced command names, and improved UX with proper configuration management.
 - **0.1.0**: First stable release — launch RegexBuddy/RegexMagic with clipboard integration, configurable paths and arguments, enable toggles, and default keybindings.
 - **0.0.1**: Initial preview release.
@@ -89,7 +90,7 @@ Both commands appear in the editor context menu and editor title when there is a
 1. On first launch, you’ll see a prompt to enable RegexBuddy and/or RegexMagic. You can also enable them later in Settings (`regex-jgs-launcher.regexBuddy.enabled`, `regex-jgs-launcher.regexMagic.enabled`).
 2. Set the executable path(s). If the default path does not exist, you will be prompted to locate the .exe the first time you run a command.
 3. Optionally define argument templates using placeholders.
-4. Select text or invoke a command and enter a regex when prompted. Use the "RegexBuddy: Use Selection as Sample" command to send selection as sample text via `-sampleclipboard`.
+4. Select text or invoke a command and enter a regex when prompted. Use the "RegexBuddy: Use Selection as Sample" command to send selection as sample text via `-testclipboard`.
 
 ## Development
 
