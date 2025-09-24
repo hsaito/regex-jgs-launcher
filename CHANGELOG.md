@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Technical
 - CI runs on push/PR to main and develop branches
 - Tests core functionality, linting, compilation, and packaging
+- Fixed Linux CI tests to run in headless mode with xvfb virtual display
 
 ## [0.2.2] - 2025-09-23
 

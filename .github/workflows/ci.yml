@@ -34,10 +34,20 @@ jobs:
     - name: Compile TypeScript
       run: npm run compile
     
+    - name: Setup display server (Linux)
+      if: runner.os == 'Linux'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb libnss3-dev libatk-bridge2.0-dev libdrm2 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libxss1 libasound2
+    
     - name: Run tests
-      run: npm test
+      run: |
+        if [ "$RUNNER_OS" == "Linux" ]; then
+          xvfb-run -a --server-args="-screen 0 1024x768x24" npm test
+        else
+          npm test
+        fi
       env:
-        # Ensure VS Code tests run in headless mode
         DISPLAY: ':99.0'
     
     - name: Test packaging (Ubuntu only, Node 20)

@@ -23,6 +23,11 @@ jobs:
     - name: Install dependencies
       run: npm ci
     
+    - name: Setup display server (Linux)
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb libnss3-dev libatk-bridge2.0-dev libdrm2 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libxss1 libasound2
+    
     - name: Run full test suite
       run: |
         echo "Running linter..."
@@ -32,7 +37,7 @@ jobs:
         npm run compile
         
         echo "Running unit tests..."
-        npm test
+        xvfb-run -a --server-args="-screen 0 1024x768x24" npm test
         
         echo "Testing packaging..."
         npm install -g @vscode/vsce
