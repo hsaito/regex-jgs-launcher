@@ -83,62 +83,26 @@ export async function activate(context: vscode.ExtensionContext) {
 	// This line of code will only be executed once when your extension is activated
 	console.log('Congratulations, your extension "regex-jgs-launcher" is now active!');
 
-	async function runOnboardingOnce() {
-		const ONBOARD_KEY = 'onboardingCompletedV1';
-		const alreadyCompleted = context.globalState.get<boolean>(ONBOARD_KEY);
-		console.log(`Onboarding check: completed=${alreadyCompleted}`);
-		if (alreadyCompleted) {
-			return;
-		}
-		const cfg = vscode.workspace.getConfiguration();
-		const buddyEnabled = cfg.get<boolean>('regex-jgs-launcher.regexBuddy.enabled') ?? false;
-		const magicEnabled = cfg.get<boolean>('regex-jgs-launcher.regexMagic.enabled') ?? false;
-		console.log(`Settings check: buddy=${buddyEnabled}, magic=${magicEnabled}`);
-		if (buddyEnabled || magicEnabled) {
-			await context.globalState.update(ONBOARD_KEY, true);
-			console.log('Skipping onboarding - tools already enabled');
-			return;
-		}
-
-		console.log('Starting onboarding flow');
-		const pick = await vscode.window.showQuickPick(
-			[
-				{ label: 'Enable RegexBuddy', picked: true },
-				{ label: 'Enable RegexMagic', picked: false },
-			],
-			{ canPickMany: true, title: 'Enable JGsoft integrations to get started' }
-		);
-		if (!pick || pick.length === 0) {
-			// User dismissed. Don't mark as completed so we can re-prompt next activation.
-			return;
-		}
-		const enableBuddy = pick.some(p => p.label.includes('RegexBuddy'));
-		const enableMagic = pick.some(p => p.label.includes('RegexMagic'));
-		if (enableBuddy) {
-			await cfg.update('regex-jgs-launcher.regexBuddy.enabled', true, vscode.ConfigurationTarget.Global);
-		}
-		if (enableMagic) {
-			await cfg.update('regex-jgs-launcher.regexMagic.enabled', true, vscode.ConfigurationTarget.Global);
-		}
-
-		const locate = await vscode.window.showInformationMessage(
-			'Would you like to set executable path(s) now?',
-			'Yes', 'Later'
-		);
-		if (locate === 'Yes') {
-			if (enableBuddy) {
-				await ensureExecutablePath('regex-jgs-launcher.regexBuddy.path', 'RegexBuddy');
-			}
-			if (enableMagic) {
-				await ensureExecutablePath('regex-jgs-launcher.regexMagic.path', 'RegexMagic');
-			}
-		}
-
-		await context.globalState.update(ONBOARD_KEY, true);
+	// Onboarding: show a small popup with Setup / Never show again / Not now
+	const cfgAtActivate = vscode.workspace.getConfiguration();
+	const showOnStartup = cfgAtActivate.get<boolean>('regex-jgs-launcher.onboarding.showOnStartup', true);
+	if (showOnStartup) {
+		vscode.window
+			.showInformationMessage(
+				'JGS Regex Launcher is not configured. Open setup?',
+				'Setup',
+				'Never show again',
+				'Not now'
+			)
+			.then(async choice => {
+				if (choice === 'Setup') {
+					await vscode.commands.executeCommand('regex-jgs-launcher.showSetup');
+					await cfgAtActivate.update('regex-jgs-launcher.onboarding.showOnStartup', false, vscode.ConfigurationTarget.Global);
+				} else if (choice === 'Never show again') {
+					await cfgAtActivate.update('regex-jgs-launcher.onboarding.showOnStartup', false, vscode.ConfigurationTarget.Global);
+				}
+			});
 	}
-
-	// Kick off onboarding in the background (non-blocking)
-	runOnboardingOnce();
 
 	// Command to reset all settings with confirmation
 	const resetAllSettings = vscode.commands.registerCommand('regex-jgs-launcher.resetAllSettings', async () => {
@@ -151,17 +115,14 @@ export async function activate(context: vscode.ExtensionContext) {
 		
 		if (confirmation === 'Yes, Reset Everything') {
 			const cfg = vscode.workspace.getConfiguration();
-			
-			// Clear the onboarding state
-			await context.globalState.update('onboardingCompletedV1', undefined);
+			// Re-enable onboarding prompt so users see setup again after reset
+			await cfg.update('regex-jgs-launcher.onboarding.showOnStartup', true, vscode.ConfigurationTarget.Global);
 			
 			// Reset all JGS settings by clearing them (this reverts to defaults)
 			await cfg.update('regex-jgs-launcher.regexBuddy.enabled', undefined, vscode.ConfigurationTarget.Global);
 			await cfg.update('regex-jgs-launcher.regexBuddy.path', undefined, vscode.ConfigurationTarget.Global);
 			await cfg.update('regex-jgs-launcher.regexBuddy.preArgs', undefined, vscode.ConfigurationTarget.Global);
 			await cfg.update('regex-jgs-launcher.regexBuddy.args', undefined, vscode.ConfigurationTarget.Global);
-			await cfg.update('regex-jgs-launcher.regexBuddy.sample.preArgs', undefined, vscode.ConfigurationTarget.Global);
-			await cfg.update('regex-jgs-launcher.regexBuddy.sample.args', undefined, vscode.ConfigurationTarget.Global);
 			
 			await cfg.update('regex-jgs-launcher.regexMagic.enabled', undefined, vscode.ConfigurationTarget.Global);
 			await cfg.update('regex-jgs-launcher.regexMagic.path', undefined, vscode.ConfigurationTarget.Global);
@@ -173,29 +134,25 @@ export async function activate(context: vscode.ExtensionContext) {
 	});
 
 	// Command to re-run onboarding on demand
-	const configureIntegrations = vscode.commands.registerCommand('regex-jgs-launcher.configureIntegrations', async () => {
-		// Force run onboarding by creating a modified version that skips the "already enabled" check
+	const showSetup = vscode.commands.registerCommand('regex-jgs-launcher.showSetup', async () => {
 		const cfg = vscode.workspace.getConfiguration();
-		const pick = await vscode.window.showQuickPick(
+		const rbEnabled = cfg.get<boolean>('regex-jgs-launcher.regexBuddy.enabled') ?? false;
+		const rmEnabled = cfg.get<boolean>('regex-jgs-launcher.regexMagic.enabled') ?? false;
+		const picked = await vscode.window.showQuickPick(
 			[
-				{ label: 'Enable RegexBuddy', picked: cfg.get<boolean>('regex-jgs-launcher.regexBuddy.enabled') ?? false },
-				{ label: 'Enable RegexMagic', picked: cfg.get<boolean>('regex-jgs-launcher.regexMagic.enabled') ?? false },
+				{ label: 'Enable RegexBuddy', picked: rbEnabled },
+				{ label: 'Enable RegexMagic', picked: rmEnabled }
 			],
-			{ canPickMany: true, title: 'Configure JGsoft integrations' }
+			{ canPickMany: true, title: 'Enable integrations' }
 		);
-		if (!pick) {
-			return; // User cancelled
-		}
-		
-		const enableBuddy = pick.some(p => p.label.includes('RegexBuddy'));
-		const enableMagic = pick.some(p => p.label.includes('RegexMagic'));
-		
+		if (!picked) { return; }
+		const enableBuddy = picked.some(p => p.label.includes('RegexBuddy'));
+		const enableMagic = picked.some(p => p.label.includes('RegexMagic'));
 		await cfg.update('regex-jgs-launcher.regexBuddy.enabled', enableBuddy, vscode.ConfigurationTarget.Global);
 		await cfg.update('regex-jgs-launcher.regexMagic.enabled', enableMagic, vscode.ConfigurationTarget.Global);
-
-		if (enableBuddy || enableMagic) {
-			vscode.window.showInformationMessage('Integration settings updated! The executable paths will be requested automatically when you first use each tool.');
-		}
+		vscode.window.showInformationMessage('Settings updated. Executable paths will be requested when needed.');
+		// Suppress future onboarding prompts after successful setup
+		await cfg.update('regex-jgs-launcher.onboarding.showOnStartup', false, vscode.ConfigurationTarget.Global);
 	});
 
 	const launchRegexBuddy = vscode.commands.registerCommand('regex-jgs-launcher.launchRegexBuddy', async () => {
@@ -261,7 +218,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		await runExternal('RegexBuddy (Sample)', exePath, preArgs, argsTemplate, { ...editorCtx, regex: undefined });
 	});
 
-	context.subscriptions.push(resetAllSettings, configureIntegrations, launchRegexBuddy, launchRegexBuddySample, launchRegexMagic);
+	context.subscriptions.push(resetAllSettings, showSetup, launchRegexBuddy, launchRegexBuddySample, launchRegexMagic);
 }
 
 // This method is called when your extension is deactivated
