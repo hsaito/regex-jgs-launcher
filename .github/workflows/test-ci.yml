@@ -1,0 +1,44 @@
+name: Test CI Setup
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/**'
+
+jobs:
+  test-ci:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run full test suite
+      run: |
+        echo "Running linter..."
+        npm run lint
+        
+        echo "Compiling TypeScript..."
+        npm run compile
+        
+        echo "Running unit tests..."
+        npm test
+        
+        echo "Testing packaging..."
+        npm install -g @vscode/vsce
+        vsce package --no-yarn
+        
+        # List the generated package
+        ls -la *.vsix
+        
+        echo "✅ All CI steps completed successfully!"

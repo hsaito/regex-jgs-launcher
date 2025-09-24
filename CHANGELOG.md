@@ -7,7 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- No changes yet.
+### Added
+- Comprehensive unit test suite with 18+ test cases covering core functionality
+- GitHub Actions CI pipeline with multi-platform testing (Ubuntu, Windows, macOS)
+- Automated testing on Node.js 18 and 20
+- Security audit and dependency checking in CI
+- VSIX packaging validation in CI
+
+### Changed
+- Exported core functions (`substituteArgs`, `getActiveEditorContext`, `ArgTemplateCtx`) for testing
+- Enhanced README with testing and CI information
+
+### Technical
+- CI runs on push/PR to main and develop branches
+- Tests core functionality, linting, compilation, and packaging
 
 ## [0.2.2] - 2025-09-23
 

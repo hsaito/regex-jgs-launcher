@@ -112,8 +112,16 @@ src/
 **Build and development:**
 - `npm run compile` - Compile TypeScript
 - `npm run watch` - Watch mode for development
-- `npm run test` - Run tests
+- `npm run test` - Run unit tests (18+ test cases)
 - `npm run lint` - Run ESLint
+- `npm run pretest` - Run compile + lint (CI preparation)
+
+**Testing:**
+- Comprehensive unit test suite with 18+ test cases
+- Tests core functions: argument substitution, editor context extraction
+- Integration tests for RegexBuddy/RegexMagic command construction
+- Edge case testing: Unicode, long values, Windows paths
+- Automated CI with GitHub Actions (multi-platform testing)
 
 ## Example argument templates
 
