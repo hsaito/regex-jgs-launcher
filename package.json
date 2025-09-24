@@ -50,6 +50,16 @@
         "title": "RegexMagic: Use Selection as Sample",
         "category": "JGS Regex Launcher",
         "enablement": "config.regex-jgs-launcher.regexMagic.enabled"
+      },
+      {
+        "command": "regex-jgs-launcher.configureIntegrations",
+        "title": "JGS Regex Launcher: Configure Integrations",
+        "category": "JGS Regex Launcher"
+      },
+      {
+        "command": "regex-jgs-launcher.resetAllSettings",
+        "title": "JGS Regex Launcher: Reset All Settings",
+        "category": "JGS Regex Launcher"
       }
     ],
     "configuration": {

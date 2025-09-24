@@ -77,7 +77,7 @@ Both commands appear in the editor context menu and editor title when there is a
 
 **Quick start:**
 
-1. In Settings, enable the integration(s) you use (`regex-jgs-launcher.regexBuddy.enabled` and/or `regex-jgs-launcher.regexMagic.enabled`).
+1. On first launch, you’ll see a prompt to enable RegexBuddy and/or RegexMagic. You can also enable them later in Settings (`regex-jgs-launcher.regexBuddy.enabled`, `regex-jgs-launcher.regexMagic.enabled`).
 2. Set the executable path(s). If the default path does not exist, you will be prompted to locate the .exe the first time you run a command.
 3. Optionally define argument templates using placeholders.
 4. Select text or invoke a command and enter a regex when prompted. Use the "RegexBuddy: Use Selection as Sample" command to send selection as sample text via `-sampleclipboard`.
