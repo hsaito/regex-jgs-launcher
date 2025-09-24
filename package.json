@@ -62,6 +62,11 @@
         "command": "regex-jgs-launcher.resetAllSettings",
         "title": "JGS Regex Launcher: Reset All Settings",
         "category": "JGS Regex Launcher"
+      },
+      {
+        "command": "regex-jgs-launcher.showResetGuide",
+        "title": "JGS Regex Launcher: Reset Guide",
+        "category": "JGS Regex Launcher"
       }
     ],
     "configuration": {
