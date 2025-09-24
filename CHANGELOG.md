@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - No changes yet.
 
+## [0.2.2] - 2025-09-23
+
+### Changed
+- Clarified reset confirmation text to state it applies to the current profile only and that other profiles are not affected.
+
+### Added
+- New command: "JGS Regex Launcher: Reset Guide" to explain how to reset settings in other profiles and provide a shortcut to switch profiles.
+
+### Docs
+- README: Corrected RegexMagic default `preArgs` docs, updated version/commands, added links to official RegexBuddy and RegexMagic websites, added an explicit unofficial-use disclaimer, and clarified Windows-only support (WINE use is unsupported, mileage may vary).
+
 ## [0.2.1] - 2025-09-23
 
 ### Fixed
@@ -73,7 +84,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Default keybindings and settings for paths, args, preArgs, and enable toggles.
 - Editor context and title menu entries when there is a selection.
 
-[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.1...HEAD
+[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.2...HEAD
+[0.2.2]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.1.0...v0.1.1
