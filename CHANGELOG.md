@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New command: "JGS Regex Launcher: Reset Guide" to explain how to reset settings in other profiles and provide a shortcut to switch profiles.
 
 ### Docs
-- README: Corrected RegexMagic default `preArgs` docs and updated version/commands.
+- README: Corrected RegexMagic default `preArgs` docs, updated version/commands, added links to official RegexBuddy and RegexMagic websites, added an explicit unofficial-use disclaimer, and clarified Windows-only support (WINE use is unsupported, mileage may vary).
 
 ## [0.2.1] - 2025-09-23
 
