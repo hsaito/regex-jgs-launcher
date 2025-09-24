@@ -28,22 +28,18 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y xvfb
     
-    - name: Run full test suite
+    - name: Run linter
+      run: npm run lint
+    
+    - name: Compile TypeScript
+      run: npm run compile
+    
+    - name: Run unit tests
+      run: xvfb-run -a --server-args="-screen 0 1024x768x24" npm test
+    
+    - name: Test packaging
       run: |
-        echo "Running linter..."
-        npm run lint
-        
-        echo "Compiling TypeScript..."
-        npm run compile
-        
-        echo "Running unit tests..."
-        xvfb-run -a --server-args="-screen 0 1024x768x24" npm test
-        
-        echo "Testing packaging..."
         npm install -g @vscode/vsce
         vsce package --no-yarn
-        
-        # List the generated package
         ls -la *.vsix
-        
         echo "✅ All CI steps completed successfully!"

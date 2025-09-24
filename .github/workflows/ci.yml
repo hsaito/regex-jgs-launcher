@@ -40,15 +40,15 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y xvfb
     
-    - name: Run tests
-      run: |
-        if [ "$RUNNER_OS" == "Linux" ]; then
-          xvfb-run -a --server-args="-screen 0 1024x768x24" npm test
-        else
-          npm test
-        fi
+    - name: Run tests (Linux)
+      if: runner.os == 'Linux'
+      run: xvfb-run -a --server-args="-screen 0 1024x768x24" npm test
       env:
         DISPLAY: ':99.0'
+    
+    - name: Run tests (Windows/macOS)
+      if: runner.os != 'Linux'
+      run: npm test
     
     - name: Test packaging (Ubuntu only, Node 20)
       if: matrix.os == 'ubuntu-latest' && matrix.node-version == '20'
