@@ -136,12 +136,22 @@
     "keybindings": [
       {
         "command": "regex-jgs-launcher.launchRegexBuddy",
-        "key": "ctrl+alt+shift+b",
+        "key": "ctrl+alt+shift+r",
         "when": "editorFocus && config.regex-jgs-launcher.regexBuddy.enabled"
       },
       {
         "command": "regex-jgs-launcher.launchRegexBuddy",
-        "key": "ctrl+alt+shift+b",
+        "key": "ctrl+alt+shift+r",
+        "when": "findWidgetVisible && config.regex-jgs-launcher.regexBuddy.enabled"
+      },
+      {
+        "command": "regex-jgs-launcher.launchRegexBuddySample",
+        "key": "ctrl+alt+shift+s",
+        "when": "editorFocus && config.regex-jgs-launcher.regexBuddy.enabled"
+      },
+      {
+        "command": "regex-jgs-launcher.launchRegexBuddySample",
+        "key": "ctrl+alt+shift+s",
         "when": "findWidgetVisible && config.regex-jgs-launcher.regexBuddy.enabled"
       },
       {

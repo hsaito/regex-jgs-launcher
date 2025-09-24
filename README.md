@@ -67,7 +67,8 @@ This extension places the regex on the clipboard before launching the external t
 
 **Default keybindings:**
 
-- `Ctrl+Alt+Shift+B` – RegexBuddy: Use Selection as Regex (when enabled and editor focused or find widget visible)
+- `Ctrl+Alt+Shift+R` – RegexBuddy: Use Selection as Regex (when enabled and editor focused or find widget visible)
+- `Ctrl+Alt+Shift+S` – RegexBuddy: Use Selection as Sample (when enabled and editor focused or find widget visible)
 - `Ctrl+Alt+Shift+M` – RegexMagic: Use Selection as Sample (when enabled and editor focused or find widget visible)
 
 **Context menu integration:**
