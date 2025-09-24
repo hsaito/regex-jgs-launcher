@@ -129,7 +129,24 @@ export function activate(context: vscode.ExtensionContext) {
 		await runExternal('RegexMagic', exePath, preArgs, argsTemplate, { ...editorCtx, regex });
 	});
 
-	context.subscriptions.push(launchRegexBuddy, launchRegexMagic);
+	const launchRegexBuddySample = vscode.commands.registerCommand('regex-jgs-launcher.launchRegexBuddySample', async () => {
+		const cfg = vscode.workspace.getConfiguration();
+		const enabled = cfg.get<boolean>('regex-jgs-launcher.regexBuddy.enabled');
+		if (!enabled) {
+			vscode.window.showInformationMessage('RegexBuddy integration is disabled in settings.');
+			return;
+		}
+		const exePath = await ensureExecutablePath('regex-jgs-launcher.regexBuddy.path', 'RegexBuddy');
+		if (!exePath) { return; }
+		const argsTemplate = cfg.get<string[]>('regex-jgs-launcher.regexBuddy.sample.args') ?? [];
+		const preArgs = cfg.get<string[]>('regex-jgs-launcher.regexBuddy.sample.preArgs') ?? ['-sampleclipboard', '-putonclipboard'];
+		const editorCtx = getActiveEditorContext();
+		const sample = editorCtx.selection && editorCtx.selection.length > 0 ? editorCtx.selection : '';
+		await vscode.env.clipboard.writeText(sample);
+		await runExternal('RegexBuddy (Sample)', exePath, preArgs, argsTemplate, { ...editorCtx, regex: undefined });
+	});
+
+	context.subscriptions.push(launchRegexBuddy, launchRegexBuddySample, launchRegexMagic);
 }
 
 // This method is called when your extension is deactivated

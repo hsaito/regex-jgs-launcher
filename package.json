@@ -35,13 +35,19 @@
     "commands": [
       {
         "command": "regex-jgs-launcher.launchRegexBuddy",
-        "title": "Launch RegexBuddy",
+        "title": "RegexBuddy: Use Selection as Regex",
+        "category": "JGS Regex Launcher",
+        "enablement": "config.regex-jgs-launcher.regexBuddy.enabled"
+      },
+      {
+        "command": "regex-jgs-launcher.launchRegexBuddySample",
+        "title": "RegexBuddy: Use Selection as Sample",
         "category": "JGS Regex Launcher",
         "enablement": "config.regex-jgs-launcher.regexBuddy.enabled"
       },
       {
         "command": "regex-jgs-launcher.launchRegexMagic",
-        "title": "Launch RegexMagic",
+        "title": "RegexMagic: Use Selection as Sample",
         "category": "JGS Regex Launcher",
         "enablement": "config.regex-jgs-launcher.regexMagic.enabled"
       }
@@ -59,18 +65,31 @@
           "default": "C:\\Program Files\\Just Great Software\\RegexBuddy 4\\RegexBuddy4.exe",
           "description": "Full path to RegexBuddy executable (defaults to C:\\Program Files\\Just Great Software\\RegexBuddy 4\\RegexBuddy4.exe)."
         },
-        "regex-jgs-launcher.regexBuddy.args": {
-          "type": "array",
-          "items": { "type": "string" },
-          "default": [],
-          "markdownDescription": "Arguments template array for RegexBuddy. You can use placeholders: {regex}, {file}, {dir}, {line}, {selection}. Each item is one argument entry."
-        },
         "regex-jgs-launcher.regexBuddy.preArgs": {
           "type": "array",
           "items": { "type": "string" },
           "default": ["-getfromclipboard", "-putonclipboard"],
           "markdownDescription": "Arguments inserted before other args for RegexBuddy. Defaults to `-getfromclipboard` and `-putonclipboard`."
         },
+        "regex-jgs-launcher.regexBuddy.args": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "markdownDescription": "Arguments template array for RegexBuddy. You can use placeholders: {regex}, {file}, {dir}, {line}, {selection}. Each item is one argument entry."
+        },
+        "regex-jgs-launcher.regexBuddy.sample.preArgs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["-sampleclipboard", "-putonclipboard"],
+          "markdownDescription": "Arguments inserted before other args for RegexBuddy Sample mode. Defaults to `-sampleclipboard` and `-putonclipboard`."
+        },
+        "regex-jgs-launcher.regexBuddy.sample.args": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "markdownDescription": "Arguments template array for RegexBuddy Sample mode. Placeholders supported: {regex}, {file}, {dir}, {line}, {selection}."
+        },
+
         "regex-jgs-launcher.regexMagic.enabled": {
           "type": "boolean",
           "default": false,
@@ -81,18 +100,17 @@
           "default": "C:\\Program Files\\Just Great Software\\RegexMagic 2\\RegexMagic2.exe",
           "description": "Full path to RegexMagic executable (defaults to C:\\Program Files\\Just Great Software\\RegexMagic 2\\RegexMagic2.exe)."
         },
+        "regex-jgs-launcher.regexMagic.preArgs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["-getfromclipboard", "-putonclipboard"],
+          "markdownDescription": "Arguments inserted before other args for RegexMagic. Defaults to `-getfromclipboard` and `-putonclipboard`."
+        },
         "regex-jgs-launcher.regexMagic.args": {
           "type": "array",
           "items": { "type": "string" },
           "default": [],
           "markdownDescription": "Arguments template array for RegexMagic. You can use placeholders: {regex}, {file}, {dir}, {line}, {selection}. Each item is one argument entry."
-        }
-        ,
-        "regex-jgs-launcher.regexMagic.preArgs": {
-          "type": "array",
-          "items": { "type": "string" },
-          "default": ["-sampleclipboard", "-putonclipboard"],
-          "markdownDescription": "Arguments inserted before other args for RegexMagic. Defaults to `-sampleclipboard` and `-putonclipboard`."
         }
       }
     },
@@ -100,6 +118,11 @@
       "editor/context": [
         {
           "command": "regex-jgs-launcher.launchRegexBuddy",
+          "when": "editorHasSelection && config.regex-jgs-launcher.regexBuddy.enabled",
+          "group": "navigation@99"
+        },
+        {
+          "command": "regex-jgs-launcher.launchRegexBuddySample",
           "when": "editorHasSelection && config.regex-jgs-launcher.regexBuddy.enabled",
           "group": "navigation@99"
         },
@@ -112,6 +135,11 @@
       "editor/title": [
         {
           "command": "regex-jgs-launcher.launchRegexBuddy",
+          "when": "editorHasSelection && config.regex-jgs-launcher.regexBuddy.enabled",
+          "group": "navigation@99"
+        },
+        {
+          "command": "regex-jgs-launcher.launchRegexBuddySample",
           "when": "editorHasSelection && config.regex-jgs-launcher.regexBuddy.enabled",
           "group": "navigation@99"
         },
