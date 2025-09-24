@@ -131,23 +131,6 @@
           "when": "editorHasSelection && config.regex-jgs-launcher.regexMagic.enabled",
           "group": "navigation@100"
         }
-      ],
-      "editor/title": [
-        {
-          "command": "regex-jgs-launcher.launchRegexBuddy",
-          "when": "editorHasSelection && config.regex-jgs-launcher.regexBuddy.enabled",
-          "group": "navigation@99"
-        },
-        {
-          "command": "regex-jgs-launcher.launchRegexBuddySample",
-          "when": "editorHasSelection && config.regex-jgs-launcher.regexBuddy.enabled",
-          "group": "navigation@99"
-        },
-        {
-          "command": "regex-jgs-launcher.launchRegexMagic",
-          "when": "editorHasSelection && config.regex-jgs-launcher.regexMagic.enabled",
-          "group": "navigation@100"
-        }
       ]
     },
     "keybindings": [
