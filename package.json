@@ -17,7 +17,7 @@
     "url": "https://github.com/hsaito/regex-jgs-launcher/issues"
   },
   "icon": "logo.png",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -90,8 +90,8 @@
         "regex-jgs-launcher.regexBuddy.sample.preArgs": {
           "type": "array",
           "items": { "type": "string" },
-          "default": ["-sampleclipboard", "-putonclipboard"],
-          "markdownDescription": "Arguments inserted before other args for RegexBuddy Sample mode. Defaults to `-sampleclipboard` and `-putonclipboard`."
+          "default": ["-testclipboard", "-putonclipboard"],
+          "markdownDescription": "Arguments inserted before other args for RegexBuddy Sample mode. Defaults to `-testclipboard` and `-putonclipboard`."
         },
         "regex-jgs-launcher.regexBuddy.sample.args": {
           "type": "array",

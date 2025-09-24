@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - No changes yet.
 
+## [0.2.1] - 2025-09-23
+
+### Fixed
+- **RegexBuddy sample mode**: Corrected default argument from `-sampleclipboard` to `-testclipboard` for proper RegexBuddy sample mode functionality.
+
 ## [0.2.0] - 2025-09-23
 
 ### Added
@@ -68,7 +73,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Default keybindings and settings for paths, args, preArgs, and enable toggles.
 - Editor context and title menu entries when there is a selection.
 
-[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.0.1...v0.1.0
