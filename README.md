@@ -17,7 +17,8 @@ This is an unofficial community extension. It is not affiliated with, endorsed b
 - Customize executable paths and argument templates with placeholders
 - Automatically applies `-appname "Visual Studio Code"`; the clipboard flags are configurable settings with sensible defaults
 - Commands are only enabled when the respective tool integration is enabled in settings
- - Two RegexBuddy modes: normal (selection as regex) and sample mode (selection as sample text)
+- **RegexBuddy**: Two modes - normal (selection as regex pattern to test/edit) and sample mode (selection as sample text to test against)
+- **RegexMagic**: Uses selection as sample text to generate regex patterns (RegexMagic specializes in creating regex from samples, not editing existing patterns)
 
 ## Requirements
 
@@ -63,6 +64,8 @@ The VS Code API does not expose the Search/Replace widget content to extensions.
 
 This extension places the regex on the clipboard before launching the external tool so flags `-getfromclipboard` and `-putonclipboard` work as intended.
 
+**RegexMagic usage note**: RegexMagic is designed to create regex patterns from sample text, not to edit existing regex patterns. If you want to edit an existing regex, use RegexBuddy instead.
+
 ## Release Notes
 
 - **0.2.2**: Clarified reset scope (profile-only), added "Reset Guide" command and link after reset; improved RegexMagic default pre-args docs; minor text polish.
@@ -73,9 +76,9 @@ This extension places the regex on the clipboard before launching the external t
 
 ## Commands
 
-- **RegexBuddy: Use Selection as Regex** (`regex-jgs-launcher.launchRegexBuddy`)
-- **RegexBuddy: Use Selection as Sample** (`regex-jgs-launcher.launchRegexBuddySample`)
-- **RegexMagic: Use Selection as Sample** (`regex-jgs-launcher.launchRegexMagic`)
+- **RegexBuddy: Use Selection as Regex** (`regex-jgs-launcher.launchRegexBuddy`) - Send selection as regex pattern to test/edit
+- **RegexBuddy: Use Selection as Sample** (`regex-jgs-launcher.launchRegexBuddySample`) - Send selection as sample text to test regex against
+- **RegexMagic: Use Selection as Sample** (`regex-jgs-launcher.launchRegexMagic`) - Send selection as sample text to generate new regex patterns
 - **JGS Regex Launcher: Setup** (`regex-jgs-launcher.showSetup`)
 - **JGS Regex Launcher: Reset All Settings** (`regex-jgs-launcher.resetAllSettings`)
 - **JGS Regex Launcher: Reset Guide** (`regex-jgs-launcher.showResetGuide`)
@@ -95,7 +98,9 @@ Commands appear in the editor context menu when there is a selection and the res
 1. On first launch, you’ll see a prompt to enable RegexBuddy and/or RegexMagic. You can also enable them later in Settings (`regex-jgs-launcher.regexBuddy.enabled`, `regex-jgs-launcher.regexMagic.enabled`).
 2. Set the executable path(s). If the default path does not exist, you will be prompted to locate the .exe the first time you run a command.
 3. Optionally define argument templates using placeholders.
-4. Select text or invoke a command and enter a regex when prompted. Use the "RegexBuddy: Use Selection as Sample" command to send selection as sample text via `-testclipboard`.
+4. **Use the tools**:
+   - **RegexBuddy**: Select text and use as regex pattern to test/edit, or use sample mode to test regex against sample text
+   - **RegexMagic**: Select sample text to generate new regex patterns (RegexMagic creates regex, it doesn't edit existing ones)
 
 ## Development
 
