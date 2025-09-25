@@ -1,0 +1,45 @@
+name: Test CI Setup
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/**'
+
+jobs:
+  test-ci:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Setup display server (Linux)
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb
+    
+    - name: Run linter
+      run: npm run lint
+    
+    - name: Compile TypeScript
+      run: npm run compile
+    
+    - name: Run unit tests
+      run: xvfb-run -a --server-args="-screen 0 1024x768x24" npm test
+    
+    - name: Test packaging
+      run: |
+        npm install -g @vscode/vsce
+        vsce package --no-yarn
+        ls -la *.vsix
+        echo "✅ All CI steps completed successfully!"

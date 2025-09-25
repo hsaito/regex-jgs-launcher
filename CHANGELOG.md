@@ -9,6 +9,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - No changes yet.
 
+## [0.2.3] - 2025-09-25
+
+### Added
+- Comprehensive unit test suite with 18+ test cases covering core functionality
+- GitHub Actions CI pipeline with multi-platform testing (Ubuntu, Windows, macOS)
+- Automated testing on Node.js 18 and 20
+- Security audit and dependency checking in CI
+- VSIX packaging validation in CI
+
+### Changed
+- Exported core functions (`substituteArgs`, `getActiveEditorContext`, `ArgTemplateCtx`) for testing
+- Enhanced README with testing and CI information
+
+### Docs
+- Clarified RegexMagic's purpose: creates regex from sample text, doesn't edit existing patterns
+- Updated command descriptions to explain RegexBuddy vs RegexMagic usage patterns
+- Added usage notes distinguishing between pattern creation (RegexMagic) and pattern editing (RegexBuddy)
+
+### Technical
+- CI runs on push/PR to main and develop branches
+- Tests core functionality, linting, compilation, and packaging
+- Fixed Linux CI tests to run in headless mode with xvfb virtual display
+
 ## [0.2.2] - 2025-09-23
 
 ### Changed
@@ -84,7 +107,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Default keybindings and settings for paths, args, preArgs, and enable toggles.
 - Editor context and title menu entries when there is a selection.
 
-[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.2...HEAD
+[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.3...HEAD
+[0.2.3]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.1.1...v0.2.0

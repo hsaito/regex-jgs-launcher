@@ -5,7 +5,7 @@ import * as cp from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
 
-type ArgTemplateCtx = {
+export type ArgTemplateCtx = {
 	regex?: string;
 	file?: string;
 	dir?: string;
@@ -13,7 +13,7 @@ type ArgTemplateCtx = {
 	selection?: string;
 };
 
-function substituteArgs(template: string[], ctx: ArgTemplateCtx): string[] {
+export function substituteArgs(template: string[], ctx: ArgTemplateCtx): string[] {
 	const replacer = (s: string) =>
 		s
 			.replaceAll('{regex}', ctx.regex ?? '')
@@ -24,7 +24,7 @@ function substituteArgs(template: string[], ctx: ArgTemplateCtx): string[] {
 	return template.map(replacer);
 }
 
-function getActiveEditorContext(): ArgTemplateCtx {
+export function getActiveEditorContext(): ArgTemplateCtx {
 	const editor = vscode.window.activeTextEditor;
 	if (!editor) {
 		return {};
