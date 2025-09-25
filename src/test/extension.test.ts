@@ -252,7 +252,7 @@ suite('JGS Regex Launcher Extension Test Suite', () => {
 			let result = substituteArgs(template, {});
 			assert.deepStrictEqual(result, ['', '', '']);
 
-			// Test with null-like values (should be treated as empty)
+			// Test with undefined and empty string values (should be treated as empty)
 			const nullishCtx = {
 				regex: undefined,
 				file: '',
