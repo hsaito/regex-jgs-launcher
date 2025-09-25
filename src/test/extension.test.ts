@@ -30,7 +30,7 @@ suite('JGS Regex Launcher Extension Test Suite', () => {
 
 		test('should handle empty/undefined context values', () => {
 			const template = ['-e', '{regex}', '-f', '{file}', '-l', '{line}'];
-			const ctx: ArgTemplateCtx = {}; // All undefined
+			const ctx: ArgTemplateCtx = {}; // Empty context
 
 			const result = substituteArgs(template, ctx);
 
