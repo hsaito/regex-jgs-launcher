@@ -1,5 +1,8 @@
 name: Test CI Setup
 
+permissions:
+  contents: read
+
 on:
   workflow_dispatch:
   push:
