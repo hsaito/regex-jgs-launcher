@@ -52,7 +52,7 @@ async function ensureExecutablePath(configKey: string, displayName: string): Pro
 			canSelectFiles: true,
 			canSelectFolders: false,
 			canSelectMany: false,
-			title: `Locate ${displayName} executable`,
+			title: vscode.l10n.t('dialog.locateExecutable', displayName),
 			filters: { 'Executable': ['exe'] }
 		});
 		if (!chosen || chosen.length === 0) {
@@ -71,7 +71,7 @@ async function runExternal(displayName: string, exePath: string, preArgs: string
 	try {
 		cp.spawn(exePath, args, { detached: true, stdio: 'ignore' }).unref();
 	} catch (err: any) {
-		vscode.window.showErrorMessage(`${displayName} failed to launch: ${err?.message ?? String(err)}`);
+		vscode.window.showErrorMessage(vscode.l10n.t('error.launchFailed', displayName, err?.message ?? String(err)));
 	}
 }
 
@@ -89,16 +89,16 @@ export async function activate(context: vscode.ExtensionContext) {
 	if (showOnStartup) {
 		vscode.window
 			.showInformationMessage(
-				'JGS Regex Launcher is not configured. Open setup?',
-				'Setup',
-				'Never show again',
-				'Not now'
+				vscode.l10n.t('message.onboarding'),
+				vscode.l10n.t('button.setup'),
+				vscode.l10n.t('button.neverShowAgain'),
+				vscode.l10n.t('button.notNow')
 			)
 			.then(async choice => {
-				if (choice === 'Setup') {
+				if (choice === vscode.l10n.t('button.setup')) {
 					await vscode.commands.executeCommand('regex-jgs-launcher.showSetup');
 					await cfgAtActivate.update('regex-jgs-launcher.onboarding.showOnStartup', false, vscode.ConfigurationTarget.Global);
-				} else if (choice === 'Never show again') {
+				} else if (choice === vscode.l10n.t('button.neverShowAgain')) {
 					await cfgAtActivate.update('regex-jgs-launcher.onboarding.showOnStartup', false, vscode.ConfigurationTarget.Global);
 				}
 			});
@@ -106,9 +106,9 @@ export async function activate(context: vscode.ExtensionContext) {
 
 	// Command: show a guide on resetting in other profiles
 	const showResetGuide = vscode.commands.registerCommand('regex-jgs-launcher.showResetGuide', async () => {
-		const message = 'JGS Regex Launcher reset affects only the current VS Code profile. To reset another profile, switch profiles (Command Palette → Profiles: Switch Profile), then run "JGS Regex Launcher: Reset All Settings" in that profile, or remove "regex-jgs-launcher.*" keys from Settings (JSON). Profiles isolate Global (application) settings per profile; extensions cannot modify settings in other profiles.';
-		const choice = await vscode.window.showInformationMessage(message, 'Open Profiles: Switch Profile', 'Close');
-		if (choice === 'Open Profiles: Switch Profile') {
+		const message = vscode.l10n.t('message.resetGuide');
+		const choice = await vscode.window.showInformationMessage(message, vscode.l10n.t('button.openProfilesSwitch'), vscode.l10n.t('button.close'));
+		if (choice === vscode.l10n.t('button.openProfilesSwitch')) {
 			await vscode.commands.executeCommand('workbench.profiles.actions.switchProfile');
 		}
 	});
@@ -116,13 +116,13 @@ export async function activate(context: vscode.ExtensionContext) {
 	// Command to reset all settings with confirmation
 	const resetAllSettings = vscode.commands.registerCommand('regex-jgs-launcher.resetAllSettings', async () => {
 		const confirmation = await vscode.window.showWarningMessage(
-			'Are you sure you want to reset JGS Regex Launcher settings to defaults for this profile?\n\nThis will (in the current profile):\n• Disable all integrations\n• Clear executable paths\n• Reset argument templates\n• Re-enable the onboarding prompt\n\nOther profiles are not affected. This action cannot be undone.',
+			vscode.l10n.t('message.resetConfirmation'),
 			{ modal: true },
-			'Yes, Reset Everything',
-			'Cancel'
+			vscode.l10n.t('button.yesReset'),
+			vscode.l10n.t('button.cancel')
 		);
 		
-		if (confirmation === 'Yes, Reset Everything') {
+		if (confirmation === vscode.l10n.t('button.yesReset')) {
 			const cfg = vscode.workspace.getConfiguration();
 			// Re-enable onboarding prompt so users see setup again after reset
 			await cfg.update('regex-jgs-launcher.onboarding.showOnStartup', true, vscode.ConfigurationTarget.Global);
@@ -140,8 +140,8 @@ export async function activate(context: vscode.ExtensionContext) {
 			await cfg.update('regex-jgs-launcher.regexMagic.preArgs', undefined, vscode.ConfigurationTarget.Global);
 			await cfg.update('regex-jgs-launcher.regexMagic.args', undefined, vscode.ConfigurationTarget.Global);
 			
-			const post = await vscode.window.showInformationMessage('All JGS Regex Launcher settings have been reset to defaults for this profile. Need help resetting other profiles?', 'Show Reset Guide', 'Close');
-			if (post === 'Show Reset Guide') {
+			const post = await vscode.window.showInformationMessage(vscode.l10n.t('message.resetComplete'), vscode.l10n.t('button.showResetGuide'), vscode.l10n.t('button.close'));
+			if (post === vscode.l10n.t('button.showResetGuide')) {
 				await vscode.commands.executeCommand('regex-jgs-launcher.showResetGuide');
 			}
 		}
@@ -154,17 +154,17 @@ export async function activate(context: vscode.ExtensionContext) {
 		const rmEnabled = cfg.get<boolean>('regex-jgs-launcher.regexMagic.enabled') ?? false;
 		const picked = await vscode.window.showQuickPick(
 			[
-				{ label: 'Enable RegexBuddy', picked: rbEnabled },
-				{ label: 'Enable RegexMagic', picked: rmEnabled }
+				{ label: vscode.l10n.t('quickPick.enableRegexBuddy'), picked: rbEnabled },
+				{ label: vscode.l10n.t('quickPick.enableRegexMagic'), picked: rmEnabled }
 			],
-			{ canPickMany: true, title: 'Enable integrations' }
+			{ canPickMany: true, title: vscode.l10n.t('quickPick.enableIntegrations') }
 		);
 		if (!picked) { return; }
 		const enableBuddy = picked.some(p => p.label.includes('RegexBuddy'));
 		const enableMagic = picked.some(p => p.label.includes('RegexMagic'));
 		await cfg.update('regex-jgs-launcher.regexBuddy.enabled', enableBuddy, vscode.ConfigurationTarget.Global);
 		await cfg.update('regex-jgs-launcher.regexMagic.enabled', enableMagic, vscode.ConfigurationTarget.Global);
-		vscode.window.showInformationMessage('Settings updated. Executable paths will be requested when needed.');
+		vscode.window.showInformationMessage(vscode.l10n.t('message.settingsUpdated'));
 		// Suppress future onboarding prompts after successful setup
 		await cfg.update('regex-jgs-launcher.onboarding.showOnStartup', false, vscode.ConfigurationTarget.Global);
 	});
@@ -184,7 +184,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		// Best-effort to get a regex: prefer selection, else ask
 		let regex = editorCtx.selection && editorCtx.selection.length > 0 ? editorCtx.selection : undefined;
 		if (!regex) {
-			regex = await vscode.window.showInputBox({ prompt: 'Enter regex to send to RegexBuddy (optional)', value: '' });
+			regex = await vscode.window.showInputBox({ prompt: vscode.l10n.t('input.enterRegexForBuddy'), value: '' });
 		}
 		// Place regex on clipboard so the tool can read it
 		if (regex !== undefined) {
@@ -197,7 +197,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		const cfg = vscode.workspace.getConfiguration();
 		const enabled = cfg.get<boolean>('regex-jgs-launcher.regexMagic.enabled');
 		if (!enabled) {
-			vscode.window.showInformationMessage('RegexMagic integration is disabled in settings.');
+			vscode.window.showInformationMessage(vscode.l10n.t('message.regexMagicDisabled'));
 			return;
 		}
 		const exePath = await ensureExecutablePath('regex-jgs-launcher.regexMagic.path', 'RegexMagic');
@@ -207,7 +207,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		const editorCtx = getActiveEditorContext();
 		let regex = editorCtx.selection && editorCtx.selection.length > 0 ? editorCtx.selection : undefined;
 		if (!regex) {
-			regex = await vscode.window.showInputBox({ prompt: 'Enter regex to send to RegexMagic (optional)', value: '' });
+			regex = await vscode.window.showInputBox({ prompt: vscode.l10n.t('input.enterRegexForMagic'), value: '' });
 		}
 		if (regex !== undefined) {
 			await vscode.env.clipboard.writeText(regex);
@@ -219,7 +219,7 @@ export async function activate(context: vscode.ExtensionContext) {
 		const cfg = vscode.workspace.getConfiguration();
 		const enabled = cfg.get<boolean>('regex-jgs-launcher.regexBuddy.enabled');
 		if (!enabled) {
-			vscode.window.showInformationMessage('RegexBuddy integration is disabled in settings.');
+			vscode.window.showInformationMessage(vscode.l10n.t('message.regexBuddyDisabled'));
 			return;
 		}
 		const exePath = await ensureExecutablePath('regex-jgs-launcher.regexBuddy.path', 'RegexBuddy');

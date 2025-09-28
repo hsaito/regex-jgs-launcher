@@ -3,7 +3,7 @@
 This VS Code extension lets you quickly launch RegexBuddy and RegexMagic from Just Great Software (JGsoft) directly from VS Code, passing the current selection, file, or folder context.
 
 **Publisher:** Hideki Saito  
-**Version:** 0.2.3  
+**Version:** 0.2.4  
 **License:** MIT
 
 ## Disclaimer
@@ -68,6 +68,7 @@ This extension places the regex on the clipboard before launching the external t
 
 ## Release Notes
 
+- **0.2.4**: Added Japanese UI localization (commands, settings, runtime messages); added traditional `package.nls.*` plus runtime `l10n` bundles; added localization docs section; added `CONTRIBUTORS` and `CODEOWNERS` files.
 - **0.2.3**: Added comprehensive unit test suite (18+ tests), GitHub Actions CI pipeline, clarified RegexMagic usage (creates regex from samples, doesn't edit existing patterns).
 - **0.2.2**: Clarified reset scope (profile-only), added "Reset Guide" command and link after reset; improved RegexMagic default pre-args docs; minor text polish.  
 - **0.2.1**: Patch — Fixed RegexBuddy sample mode default to `-testclipboard`.
@@ -104,6 +105,50 @@ Commands appear in the editor context menu when there is a selection and the res
    - **RegexMagic**: Select sample text to generate new regex patterns (RegexMagic creates regex, it doesn't edit existing ones)
 
 ## Development
+
+## Localization / Japanese UI Support
+
+This extension now supports localized UI text (commands, settings, titles) in **Japanese (ja)**.
+
+### What is localized
+- Command titles (Command Palette / context menu)
+- Configuration section title and all setting descriptions / markdown descriptions
+- Onboarding, reset dialogs, and runtime messages shown via the VS Code UI (using `vscode.l10n.t`)
+
+### Technologies used
+- Traditional VS Code localization: `package.nls.json` (default / English) + `package.nls.ja.json` (Japanese)
+- Modern l10n runtime bundle: `l10n/bundle.l10n.json` + `l10n/bundle.l10n.ja.json` for messages coming from TypeScript code
+- Fallback order: Japanese → English (default). If a key is missing in Japanese, the English string is shown.
+
+### How to see the Japanese UI
+1. Install the official Japanese Language Pack for VS Code (if not already installed).
+2. Open Command Palette → type: `Configure Display Language`.
+3. Select `ja` and restart VS Code.
+4. Open Command Palette and search for `RegexBuddy` or `JGS` — the commands should appear in Japanese.
+5. Open Settings and search for `JGS Regex` — setting titles/descriptions will be in Japanese.
+
+### Notes
+- Product names (RegexBuddy / RegexMagic) remain in English intentionally.
+- File system paths and user-provided argument values are not translated.
+- If you switch languages while VS Code is running, you must restart for manifest (package.json) strings to refresh.
+
+### Contributing additional languages
+If you would like to add another language:
+1. Copy `package.nls.json` to `package.nls.<lang>.json` (e.g. `package.nls.fr.json`).
+2. Translate only the values; keep the keys identical.
+3. Copy `l10n/bundle.l10n.json` to `l10n/bundle.l10n.<lang>.json` and translate the values.
+4. Use UTF-8 encoding without BOM.
+5. Submit a PR. (Optional) Add yourself to the CONTRIBUTORS section if one is later added.
+
+### Testing a new locale quickly
+You can launch VS Code with a locale override (helpful before installing a language pack):
+```
+code --locale=ja
+```
+Replace `ja` with the target language code when testing new translations.
+
+If something appears in English when you expect Japanese, the key is likely missing from `package.nls.ja.json` or the runtime bundle; search for the English phrase to find the source key.
+
 
 This extension is built with TypeScript and uses the VS Code Extension API.
 
