@@ -1,0 +1,23 @@
+{
+  "displayName": "JGS Regex ランチャー",
+  "description": "JGSoft 正規表現ソフトウェアを起動する非公式ランチャー",
+  "command.launchRegexBuddy": "RegexBuddy: 選択範囲を正規表現として使用",
+  "command.launchRegexBuddySample": "RegexBuddy: 選択範囲をサンプルとして使用",
+  "command.launchRegexMagic": "RegexMagic: 選択範囲をサンプルとして使用",
+  "command.showSetup": "JGS Regex ランチャー: セットアップ",
+  "command.resetAllSettings": "JGS Regex ランチャー: 全設定をリセット",
+  "command.showResetGuide": "JGS Regex ランチャー: リセットガイド",
+  "category.jgsRegexLauncher": "JGS Regex ランチャー",
+  "config.title": "JGS Regex ランチャー",
+  "config.onboarding.showOnStartup": "起動時にセットアッププロンプトを表示（プロファイル固有）",
+  "config.regexBuddy.enabled": "RegexBuddy 統合を有効にする",
+  "config.regexBuddy.path": "RegexBuddy 実行ファイルのフルパス（デフォルト: C:\\Program Files\\Just Great Software\\RegexBuddy 4\\RegexBuddy4.exe）。",
+  "config.regexBuddy.args": "RegexBuddy 引数テンプレート配列。プレースホルダーが使用できます: {regex}, {file}, {dir}, {line}, {selection}。各項目は1つの引数エントリです。",
+  "config.regexBuddy.preArgs": "RegexBuddy の他の引数の前に挿入される引数。デフォルトは `-getfromclipboard` と `-putonclipboard` です。",
+  "config.regexBuddy.sample.args": "RegexBuddy サンプルモード引数テンプレート配列。サポートされるプレースホルダー: {regex}, {file}, {dir}, {line}, {selection}。",
+  "config.regexBuddy.sample.preArgs": "RegexBuddy サンプルモードの他の引数の前に挿入される引数。デフォルトは `-testclipboard` と `-putonclipboard` です。",
+  "config.regexMagic.enabled": "RegexMagic 統合を有効にする",
+  "config.regexMagic.path": "RegexMagic 実行ファイルのフルパス（デフォルト: C:\\Program Files\\Just Great Software\\RegexMagic 2\\RegexMagic2.exe）。",
+  "config.regexMagic.args": "RegexMagic 引数テンプレート配列。プレースホルダーが使用できます: {regex}, {file}, {dir}, {line}, {selection}。各項目は1つの引数エントリです。",
+  "config.regexMagic.preArgs": "RegexMagic の他の引数の前に挿入される引数。デフォルトは `-sampleclipboard` と `-putonclipboard` です。"
+}
