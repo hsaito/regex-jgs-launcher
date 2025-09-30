@@ -220,6 +220,11 @@ export async function activate(context: vscode.ExtensionContext) {
 		const regexBuddyDetected = detected.find(d => d.name === 'RegexBuddy');
 		const regexMagicDetected = detected.find(d => d.name === 'RegexMagic');
 		
+		// Auto-enable detected tools if they haven't been explicitly configured yet
+		// This provides a better default experience during onboarding
+		const rbDefaultEnabled = rbEnabled || (regexBuddyDetected !== undefined);
+		const rmDefaultEnabled = rmEnabled || (regexMagicDetected !== undefined);
+		
 		const rbLabel = regexBuddyDetected 
 			? `${safeL10n('quickPick.enableRegexBuddy', 'Enable RegexBuddy')} (v${regexBuddyDetected.version} detected)`
 			: safeL10n('quickPick.enableRegexBuddy', 'Enable RegexBuddy');
@@ -229,8 +234,8 @@ export async function activate(context: vscode.ExtensionContext) {
 		
 		const picked = await vscode.window.showQuickPick(
 			[
-				{ label: rbLabel, picked: rbEnabled },
-				{ label: rmLabel, picked: rmEnabled }
+				{ label: rbLabel, picked: rbDefaultEnabled },
+				{ label: rmLabel, picked: rmDefaultEnabled }
 			],
 			{ canPickMany: true, title: safeL10n('quickPick.enableIntegrations', 'Enable integrations') }
 		);

@@ -368,6 +368,30 @@ suite('JGS Regex Launcher Extension Test Suite', () => {
 				assert.strictEqual(rm.configKey, 'regex-jgs-launcher.regexMagic.path');
 			}
 		});
+
+		test('should provide appropriate configuration keys for auto-enabling during onboarding', () => {
+			const detected = autodetectExecutables();
+			
+			// Verify each detected tool has the correct configuration key for auto-enabling
+			detected.forEach(tool => {
+				if (tool.name === 'RegexBuddy') {
+					assert.strictEqual(tool.configKey, 'regex-jgs-launcher.regexBuddy.path', 
+						'RegexBuddy should use regexBuddy.path config key');
+				} else if (tool.name === 'RegexMagic') {
+					assert.strictEqual(tool.configKey, 'regex-jgs-launcher.regexMagic.path', 
+						'RegexMagic should use regexMagic.path config key');
+				}
+			});
+
+			// Verify the structure supports onboarding auto-enable functionality
+			detected.forEach(tool => {
+				assert.ok(typeof tool.name === 'string' && tool.name.length > 0, 'Tool name should be valid');
+				assert.ok(typeof tool.version === 'string' && tool.version.length > 0, 'Tool version should be valid');
+				assert.ok(typeof tool.path === 'string' && tool.path.length > 0, 'Tool path should be valid');
+				assert.ok(typeof tool.configKey === 'string' && tool.configKey.startsWith('regex-jgs-launcher.'), 
+					'Tool configKey should be valid extension configuration key');
+			});
+		});
 	});
 
 	// Test suite for localization key exposure detection

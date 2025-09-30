@@ -1,6 +1,14 @@
 # JGS Regex Launcher
 
-This VS Code extension lets you quickly launch RegexBuddy and RegexMagic from **Quick start:**
+This VS Code extension lets you quickly launch RegexBuddy and RegexMagic from **Quick**Quick start:**
+
+1. **Auto-detection during onboarding**: On first launch, you'll see a prompt to enable RegexBuddy and/or RegexMagic. If the extension detects these tools in standard locations (Program Files), they will be automatically checked for enabling, making setup effortless.
+2. **Automatic path configuration**: When you enable detected tools during setup, their executable paths are automatically configured.
+3. **Manual setup if needed**: If tools aren't detected, you can still enable them manually. The executable path will be prompted for when first used.
+4. **Auto-detect command**: Use "JGS Regex Launcher: Auto-detect Executable Paths" from the Command Palette to search for tools and update paths at any time.
+5. **Use the tools**:
+   - **RegexBuddy**: Select text and use as regex pattern to test/edit, or use sample mode to test regex against sample text
+   - **RegexMagic**: Select sample text to generate new regex patterns (RegexMagic creates regex, it doesn't edit existing ones)*
 
 1. On first launch, you'll see a prompt to enable RegexBuddy and/or RegexMagic with **auto-detection** of installed versions. The extension will automatically find and configure paths for detected installations.
 2. If auto-detection doesn't find your installation, or you want to manually update paths later, use the "Auto-detect Executable Paths" command or manually set paths in Settings.
