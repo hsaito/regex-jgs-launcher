@@ -6,7 +6,15 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
-## [0.2.6] - 2025-09-30
+## [0.2.7] - 2025-09-30
+
+### Changed
+- Reissued package after 0.2.6 was withdrawn (no code changes compared to 0.2.5 feature set).
+
+### Notes
+- 0.2.6 considered DOA / not published; use 0.2.7 instead.
+
+## [0.2.6] - 2025-09-30 (withdrawn / replaced by 0.2.7)
 
 ### Added
 - (Consolidated) Executable auto-detection, onboarding auto-enable, localization resilience, and expanded tests (carried forward from 0.2.5 cycle)
@@ -164,7 +172,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Default keybindings and settings for paths, args, preArgs, and enable toggles.
 - Editor context and title menu entries when there is a selection.
 
-[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.6...HEAD
+[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.7...HEAD
+[0.2.7]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.6...v0.2.7
 [0.2.6]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.5...v0.2.6
 [0.2.5]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.4...v0.2.5
 [0.2.4]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.3...v0.2.4

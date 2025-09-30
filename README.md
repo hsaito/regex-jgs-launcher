@@ -18,7 +18,7 @@ This VS Code extension lets you quickly launch RegexBuddy and RegexMagic from **
    - **RegexMagic**: Select sample text to generate new regex patterns (RegexMagic creates regex, it doesn't edit existing ones)at Software (JGsoft) directly from VS Code, passing the current selection, file, or folder context.
 
 **Publisher:** Hideki Saito  
-**Version:** 0.2.6  
+**Version:** 0.2.7  
 **License:** MIT
 
 ## Disclaimer
@@ -85,10 +85,13 @@ This extension places the regex on the clipboard before launching the external t
 
 ## Release Notes
 
-- **0.2.6**:
-	- Documentation & metadata alignment release (separate entry from already published 0.2.5)
-	- No functional changes vs 0.2.5 (features below)
-	- Ensures Marketplace semantic versioning compliance (removed 0.2.5.1 doc-only bump)
+- **0.2.7**:
+	- Patch release to supersede 0.2.6 (not published / withdrawn). No functional code changes vs 0.2.5.
+	- Reissued package to ensure Marketplace availability.
+
+- **0.2.6** (withdrawn / replaced by 0.2.7):
+	- Documentation & metadata alignment (no functional changes vs 0.2.5)
+	- Ensured semantic version compliance after removing doc-only 0.2.5.1 bump
 
 - **0.2.5**:
 	- Added executable auto-detection during onboarding (RegexBuddy v5 preferred, fallback to v4; RegexMagic v2) with automatic path application
