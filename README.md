@@ -18,7 +18,7 @@ This VS Code extension lets you quickly launch RegexBuddy and RegexMagic from **
    - **RegexMagic**: Select sample text to generate new regex patterns (RegexMagic creates regex, it doesn't edit existing ones)at Software (JGsoft) directly from VS Code, passing the current selection, file, or folder context.
 
 **Publisher:** Hideki Saito  
-**Version:** 0.2.4  
+**Version:** 0.2.6  
 **License:** MIT
 
 ## Disclaimer
@@ -85,6 +85,18 @@ This extension places the regex on the clipboard before launching the external t
 
 ## Release Notes
 
+- **0.2.6**:
+	- Documentation & metadata alignment release (separate entry from already published 0.2.5)
+	- No functional changes vs 0.2.5 (features below)
+	- Ensures Marketplace semantic versioning compliance (removed 0.2.5.1 doc-only bump)
+
+- **0.2.5**:
+	- Added executable auto-detection during onboarding (RegexBuddy v5 preferred, fallback to v4; RegexMagic v2) with automatic path application
+	- Onboarding now auto-enables detected integrations (checkbox pre-selected) reducing initial friction
+	- Added standalone command: "JGS Regex Launcher: Auto-detect Executable Paths" for on-demand detection & path updates
+	- Introduced resilient localization layer (safe fallback when l10n bundle not yet ready) preventing raw key leakage
+	- Expanded test suite (24 tests) including localization integrity & detection priority ordering
+	- README & CHANGELOG updates
 - **0.2.4**: Added Japanese UI localization (commands, settings, runtime messages); added traditional `package.nls.*` plus runtime `l10n` bundles; added localization docs section; added `CONTRIBUTORS` and `CODEOWNERS` files.
 - **0.2.3**: Added comprehensive unit test suite (18+ tests), GitHub Actions CI pipeline, clarified RegexMagic usage (creates regex from samples, doesn't edit existing patterns).
 - **0.2.2**: Clarified reset scope (profile-only), added "Reset Guide" command and link after reset; improved RegexMagic default pre-args docs; minor text polish.  
@@ -186,8 +198,8 @@ src/
 - `npm run pretest` - Run compile + lint (CI preparation)
 
 **Testing:**
-- Comprehensive unit test suite with 18+ test cases
-- Tests core functions: argument substitution, editor context extraction
+- Comprehensive unit test suite with 24 test cases
+- Tests core functions: argument substitution, editor context extraction, detection priority, localization fallback safety
 - Integration tests for RegexBuddy/RegexMagic command construction
 - Edge case testing: Unicode, long values, Windows paths
 - Automated CI with GitHub Actions (multi-platform testing)

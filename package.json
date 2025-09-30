@@ -18,7 +18,7 @@
     "url": "https://github.com/hsaito/regex-jgs-launcher/issues"
   },
   "icon": "logo.png",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -98,29 +98,43 @@
         },
         "regex-jgs-launcher.regexBuddy.args": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "default": [],
           "markdownDescription": "%config.regexBuddy.args%",
           "scope": "application"
         },
         "regex-jgs-launcher.regexBuddy.preArgs": {
           "type": "array",
-          "items": { "type": "string" },
-          "default": ["-getfromclipboard", "-putonclipboard"],
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "-getfromclipboard",
+            "-putonclipboard"
+          ],
           "markdownDescription": "%config.regexBuddy.preArgs%",
           "scope": "application"
         },
         "regex-jgs-launcher.regexBuddy.sample.args": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "default": [],
           "markdownDescription": "%config.regexBuddy.sample.args%",
           "scope": "application"
         },
         "regex-jgs-launcher.regexBuddy.sample.preArgs": {
           "type": "array",
-          "items": { "type": "string" },
-          "default": ["-testclipboard", "-putonclipboard"],
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "-testclipboard",
+            "-putonclipboard"
+          ],
           "markdownDescription": "%config.regexBuddy.sample.preArgs%",
           "scope": "application"
         },
@@ -138,15 +152,22 @@
         },
         "regex-jgs-launcher.regexMagic.args": {
           "type": "array",
-          "items": { "type": "string" },
+          "items": {
+            "type": "string"
+          },
           "default": [],
           "markdownDescription": "%config.regexMagic.args%",
           "scope": "application"
         },
         "regex-jgs-launcher.regexMagic.preArgs": {
           "type": "array",
-          "items": { "type": "string" },
-          "default": ["-sampleclipboard", "-putonclipboard"],
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "-sampleclipboard",
+            "-putonclipboard"
+          ],
           "markdownDescription": "%config.regexMagic.preArgs%",
           "scope": "application"
         }
@@ -213,14 +234,15 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.104.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
+    "@types/vscode": "^1.104.0",
     "@typescript-eslint/eslint-plugin": "^8.42.0",
     "@typescript-eslint/parser": "^8.42.0",
-    "eslint": "^9.34.0",
-    "typescript": "^5.9.2",
     "@vscode/test-cli": "^0.0.11",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "@vscode/vsce": "^3.6.2",
+    "eslint": "^9.34.0",
+    "typescript": "^5.9.2"
   }
 }
