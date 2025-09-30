@@ -39,8 +39,6 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Implemented safe localization wrapper with fallback text for all user-facing messages
 - Enhanced test suite with localization validation and auto-detection behavior verification
 
-- No changes yet.
-
 ## [0.2.4] - 2025-09-28
 
 ### Added
