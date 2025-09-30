@@ -1,6 +1,21 @@
 # JGS Regex Launcher
 
-This VS Code extension lets you quickly launch RegexBuddy and RegexMagic from Just Great Software (JGsoft) directly from VS Code, passing the current selection, file, or folder context.
+This VS Code extension lets you quickly launch RegexBuddy and RegexMagic from **Quick**Quick start:**
+
+1. **Auto-detection during onboarding**: On first launch, you'll see a prompt to enable RegexBuddy and/or RegexMagic. If the extension detects these tools in standard locations (Program Files), they will be automatically checked for enabling, making setup effortless.
+2. **Automatic path configuration**: When you enable detected tools during setup, their executable paths are automatically configured.
+3. **Manual setup if needed**: If tools aren't detected, you can still enable them manually. The executable path will be prompted for when first used.
+4. **Auto-detect command**: Use "JGS Regex Launcher: Auto-detect Executable Paths" from the Command Palette to search for tools and update paths at any time.
+5. **Use the tools**:
+   - **RegexBuddy**: Select text and use as regex pattern to test/edit, or use sample mode to test regex against sample text
+   - **RegexMagic**: Select sample text to generate new regex patterns (RegexMagic creates regex, it doesn't edit existing ones)*
+
+1. On first launch, you'll see a prompt to enable RegexBuddy and/or RegexMagic with **auto-detection** of installed versions. The extension will automatically find and configure paths for detected installations.
+2. If auto-detection doesn't find your installation, or you want to manually update paths later, use the "Auto-detect Executable Paths" command or manually set paths in Settings.
+3. Optionally define argument templates using placeholders.
+4. **Use the tools**:
+   - **RegexBuddy**: Select text and use as regex pattern to test/edit, or use sample mode to test regex against sample text
+   - **RegexMagic**: Select sample text to generate new regex patterns (RegexMagic creates regex, it doesn't edit existing ones)at Software (JGsoft) directly from VS Code, passing the current selection, file, or folder context.
 
 **Publisher:** Hideki Saito  
 **Version:** 0.2.4  
@@ -13,6 +28,7 @@ This is an unofficial community extension. It is not affiliated with, endorsed b
 ## Features
 
 - Launch [RegexBuddy](https://www.regexbuddy.com/) or [RegexMagic](https://www.regexmagic.com/) with a single command or keyboard shortcut
+- **Auto-detection**: Automatically finds installed RegexBuddy (v5 preferred, then v4) and RegexMagic (v2) during setup
 - Pass context from the active editor: selection text, file path, folder, and current line
 - Customize executable paths and argument templates with placeholders
 - Automatically applies `-appname "Visual Studio Code"`; the clipboard flags are configurable settings with sensible defaults
@@ -22,11 +38,12 @@ This is an unofficial community extension. It is not affiliated with, endorsed b
 
 ## Requirements
 
-- Windows with [RegexBuddy 4](https://www.regexbuddy.com/) and/or [RegexMagic 2](https://www.regexmagic.com/) installed
-- Defaults used if present:
-	- RegexBuddy: C:\\Program Files\\Just Great Software\\RegexBuddy 4\\RegexBuddy4.exe
-	- RegexMagic: C:\\Program Files\\Just Great Software\\RegexMagic 2\\RegexMagic2.exe
-- You can override paths in Settings (see below)
+- Windows with [RegexBuddy 4+](https://www.regexbuddy.com/) and/or [RegexMagic 2](https://www.regexmagic.com/) installed
+- Auto-detection searches for (in priority order):
+	- RegexBuddy 5: C:\\Program Files\\Just Great Software\\RegexBuddy 5\\RegexBuddy5.exe
+	- RegexBuddy 4: C:\\Program Files\\Just Great Software\\RegexBuddy 4\\RegexBuddy4.exe
+	- RegexMagic 2: C:\\Program Files\\Just Great Software\\RegexMagic 2\\RegexMagic2.exe
+- You can override paths in Settings or use the Auto-detect command (see below)
 
 Note on platforms: This extension officially supports Windows only because RegexBuddy and RegexMagic are Windows applications. On macOS or Linux, you might be able to run these tools under WINE or similar compatibility layers, but this is not a supported scenario and behavior may vary (for example, clipboard flags and file path handling).
 
@@ -81,7 +98,8 @@ This extension places the regex on the clipboard before launching the external t
 - **RegexBuddy: Use Selection as Regex** (`regex-jgs-launcher.launchRegexBuddy`) - Send selection as regex pattern to test/edit
 - **RegexBuddy: Use Selection as Sample** (`regex-jgs-launcher.launchRegexBuddySample`) - Send selection as sample text to test regex against
 - **RegexMagic: Use Selection as Sample** (`regex-jgs-launcher.launchRegexMagic`) - Send selection as sample text to generate new regex patterns
-- **JGS Regex Launcher: Setup** (`regex-jgs-launcher.showSetup`)
+- **JGS Regex Launcher: Setup** (`regex-jgs-launcher.showSetup`) - Configure integrations with auto-detection
+- **JGS Regex Launcher: Auto-detect Executable Paths** (`regex-jgs-launcher.autodetectPaths`) - Search for and update executable paths
 - **JGS Regex Launcher: Reset All Settings** (`regex-jgs-launcher.resetAllSettings`)
 - **JGS Regex Launcher: Reset Guide** (`regex-jgs-launcher.showResetGuide`)
 

@@ -18,7 +18,7 @@
     "url": "https://github.com/hsaito/regex-jgs-launcher/issues"
   },
   "icon": "logo.png",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -67,6 +67,11 @@
       {
         "command": "regex-jgs-launcher.showResetGuide",
         "title": "%command.showResetGuide%",
+        "category": "%category.jgsRegexLauncher%"
+      },
+      {
+        "command": "regex-jgs-launcher.autodetectPaths",
+        "title": "%command.autodetectPaths%",
         "category": "%category.jgsRegexLauncher%"
       }
     ],
