@@ -6,6 +6,17 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.2.8] - 2025-11-29
+
+### Fixed
+- **README documentation**: Corrected malformed header and duplicate Quick Start sections
+- **Documentation structure**: Fixed corrupted text and improved section organization
+- Separated Quick Start (recommended flow) from Alternative Setup (manual configuration)
+
+### Changed
+- Cleaned up README formatting and removed text artifacts
+- No functional code changes vs 0.2.7
+
 ## [0.2.7] - 2025-09-30
 
 ### Changed
@@ -172,7 +183,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Default keybindings and settings for paths, args, preArgs, and enable toggles.
 - Editor context and title menu entries when there is a selection.
 
-[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.7...HEAD
+[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.8...HEAD
+[0.2.8]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.7...v0.2.8
 [0.2.7]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.6...v0.2.7
 [0.2.6]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.5...v0.2.6
 [0.2.5]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.4...v0.2.5
