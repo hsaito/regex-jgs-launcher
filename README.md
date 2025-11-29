@@ -1,6 +1,12 @@
 # JGS Regex Launcher
 
-This VS Code extension lets you quickly launch RegexBuddy and RegexMagic from **Quick**Quick start:**
+This VS Code extension lets you quickly launch RegexBuddy and RegexMagic from Just Great Software (JGsoft) directly from VS Code, passing the current selection, file, or folder context.
+
+**Publisher:** Hideki Saito  
+**Version:** 0.2.8  
+**License:** MIT
+
+## Quick Start
 
 1. **Auto-detection during onboarding**: On first launch, you'll see a prompt to enable RegexBuddy and/or RegexMagic. If the extension detects these tools in standard locations (Program Files), they will be automatically checked for enabling, making setup effortless.
 2. **Automatic path configuration**: When you enable detected tools during setup, their executable paths are automatically configured.
@@ -8,18 +14,15 @@ This VS Code extension lets you quickly launch RegexBuddy and RegexMagic from **
 4. **Auto-detect command**: Use "JGS Regex Launcher: Auto-detect Executable Paths" from the Command Palette to search for tools and update paths at any time.
 5. **Use the tools**:
    - **RegexBuddy**: Select text and use as regex pattern to test/edit, or use sample mode to test regex against sample text
-   - **RegexMagic**: Select sample text to generate new regex patterns (RegexMagic creates regex, it doesn't edit existing ones)*
+   - **RegexMagic**: Select sample text to generate new regex patterns (RegexMagic creates regex, it doesn't edit existing ones)
 
-1. On first launch, you'll see a prompt to enable RegexBuddy and/or RegexMagic with **auto-detection** of installed versions. The extension will automatically find and configure paths for detected installations.
-2. If auto-detection doesn't find your installation, or you want to manually update paths later, use the "Auto-detect Executable Paths" command or manually set paths in Settings.
+## Alternative Setup
+
+If you prefer manual configuration or need to change settings later:
+
+1. Enable integrations in Settings (`regex-jgs-launcher.regexBuddy.enabled`, `regex-jgs-launcher.regexMagic.enabled`).
+2. Set the executable path(s). If the default path does not exist, you will be prompted to locate the .exe the first time you run a command.
 3. Optionally define argument templates using placeholders.
-4. **Use the tools**:
-   - **RegexBuddy**: Select text and use as regex pattern to test/edit, or use sample mode to test regex against sample text
-   - **RegexMagic**: Select sample text to generate new regex patterns (RegexMagic creates regex, it doesn't edit existing ones)at Software (JGsoft) directly from VS Code, passing the current selection, file, or folder context.
-
-**Publisher:** Hideki Saito  
-**Version:** 0.2.7  
-**License:** MIT
 
 ## Disclaimer
 
@@ -85,6 +88,11 @@ This extension places the regex on the clipboard before launching the external t
 
 ## Release Notes
 
+- **0.2.8**:
+	- Documentation fix: Corrected README corruption and structural issues
+	- Fixed malformed Quick Start and Alternative Setup sections
+	- No functional code changes vs 0.2.7
+
 - **0.2.7**:
 	- Patch release to supersede 0.2.6 (not published / withdrawn). No functional code changes vs 0.2.5.
 	- Reissued package to ensure Marketplace availability.
@@ -127,15 +135,6 @@ This extension places the regex on the clipboard before launching the external t
 **Context menu integration:**
 
 Commands appear in the editor context menu when there is a selection and the respective integration is enabled.
-
-**Quick start:**
-
-1. On first launch, you’ll see a prompt to enable RegexBuddy and/or RegexMagic. You can also enable them later in Settings (`regex-jgs-launcher.regexBuddy.enabled`, `regex-jgs-launcher.regexMagic.enabled`).
-2. Set the executable path(s). If the default path does not exist, you will be prompted to locate the .exe the first time you run a command.
-3. Optionally define argument templates using placeholders.
-4. **Use the tools**:
-   - **RegexBuddy**: Select text and use as regex pattern to test/edit, or use sample mode to test regex against sample text
-   - **RegexMagic**: Select sample text to generate new regex patterns (RegexMagic creates regex, it doesn't edit existing ones)
 
 ## Development
 
