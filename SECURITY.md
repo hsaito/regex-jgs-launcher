@@ -33,6 +33,10 @@ If you discover a security vulnerability in this VS Code extension, please repor
 
 **Important**: Security issues pertaining to RegexBuddy or RegexMagic applications themselves must **not** be reported to this project. Such issues should be reported directly to [Just Great Software](https://www.just-great-software.com/contact.html), the developer of those applications.
 
+### Preferred: GitHub Security Advisories
+- For sensitive or critical issues, submit a private report via GitHub Security Advisories: https://github.com/hsaito/regex-jgs-launcher/security/advisories/new
+- Include affected version(s), environment, clear reproduction steps, and impact assessment to help maintainers triage efficiently.
+
 ### For Non-Critical Vulnerabilities
 - Open an issue on our [GitHub Issues](https://github.com/hsaito/regex-jgs-launcher/issues) page
 - Include as much detail as possible about the vulnerability
@@ -40,7 +44,8 @@ If you discover a security vulnerability in this VS Code extension, please repor
 
 ### For Critical Vulnerabilities
 - **Do not** create a public issue for critical security vulnerabilities
-- Send an email to the project maintainer with details about the vulnerability
+- Prefer using the GitHub Security Advisories link above to report privately
+- If you cannot use GitHub advisories, send an email to the project maintainer with details about the vulnerability
 - Allow reasonable time for the issue to be addressed before public disclosure
 
 ## Security Considerations
