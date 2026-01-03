@@ -26,6 +26,9 @@ jobs:
       - name: Show installed packages
         run: npm ls --all
 
+      - name: Compile TypeScript
+        run: npm run compile
+
       - name: Compute extension version
         run: |
           EXT_VERSION=$(node -p "require('./package.json').version")
