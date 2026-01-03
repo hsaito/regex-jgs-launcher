@@ -6,6 +6,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.2.9] - 2026-01-03
+
+### Changed
+- Bumped extension version to 0.2.9 and refreshed dependencies
+- Added release automation to package and publish VSIX on tagged builds
+
 ## [0.2.8] - 2025-11-29
 
 ### Fixed
@@ -183,7 +189,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Default keybindings and settings for paths, args, preArgs, and enable toggles.
 - Editor context and title menu entries when there is a selection.
 
-[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.8...HEAD
+[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.9...HEAD
+[0.2.9]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.8...v0.2.9
 [0.2.8]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.7...v0.2.8
 [0.2.7]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.6...v0.2.7
 [0.2.6]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.5...v0.2.6
