@@ -1,0 +1,41 @@
+name: Release Extension
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  package-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Compute extension version
+        run: |
+          echo "EXT_VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+
+      - name: Package VS Code extension
+        run: |
+          npx vsce package
+          echo "VSIX_PATH=$(ls *.vsix)" >> $GITHUB_ENV
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Version ${{ env.EXT_VERSION }}
+          files: ${{ env.VSIX_PATH }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
