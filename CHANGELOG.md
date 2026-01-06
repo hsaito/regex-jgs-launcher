@@ -6,6 +6,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Changed
+- Raised minimum VS Code engine requirement to 1.107.0 to align with updated API typings and packaging checks.
+
 ## [0.2.9] - 2026-01-03
 
 ### Changed
