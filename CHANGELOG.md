@@ -6,8 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.2.10] - 2026-01-05
+
 ### Changed
 - Raised minimum VS Code engine requirement to 1.107.0 to align with updated API typings and packaging checks.
+- Updated TypeScript ESLint tooling to 8.51.0 for compatibility with newer VS Code typings.
 
 ## [0.2.9] - 2026-01-03
 
