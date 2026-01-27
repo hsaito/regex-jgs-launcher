@@ -6,6 +6,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.2.12] - 2026-01-26
+
+### Security
+- Added npm override to force Lodash 4.17.23+ to mitigate prototype pollution vulnerability (CVE-2020-8203) in transitive dependencies
+- Lodash versions 4.0.0 through 4.17.22 were vulnerable to prototype pollution in `_.unset` and `_.omit` functions
+
 ## [0.2.10] - 2026-01-05
 
 ### Changed
