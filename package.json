@@ -244,5 +244,8 @@
     "@vscode/vsce": "^3.7.1",
     "eslint": "^9.39.2",
     "typescript": "^5.9.3"
+  },
+  "overrides": {
+    "lodash": ">=4.17.23"
   }
 }
