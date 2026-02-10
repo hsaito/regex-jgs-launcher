@@ -6,6 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.2.13] - 2026-02-09
+
+### Changed
+- Dependency update
+
 ## [0.2.12] - 2026-01-26
 
 ### Security
