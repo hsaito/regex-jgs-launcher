@@ -6,6 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.2.14] - 2026-02-13
+
+### Changed
+- Maintenance release
+
 ## [0.2.13] - 2026-02-09
 
 ### Changed
