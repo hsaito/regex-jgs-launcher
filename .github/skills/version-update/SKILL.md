@@ -1,3 +1,8 @@
+---
+name: Version Update
+description: Update version references consistently across the project.
+---
+
 # Skill: Version Update
 
 ## Purpose
