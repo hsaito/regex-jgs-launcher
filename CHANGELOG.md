@@ -6,6 +6,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Changed
+- Lowered the minimum VS Code engine requirement from 1.110.0 to 1.104.0 for broader compatibility.
+
 ## [0.2.14] - 2026-02-13
 
 ### Changed
