@@ -18,14 +18,14 @@
     "url": "https://github.com/hsaito/regex-jgs-launcher/issues"
   },
   "icon": "logo.png",
-  "version": "0.2.14",
+  "version": "0.2.15",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/hsaito/regex-jgs-launcher.git"
   },
   "engines": {
-    "vscode": "^1.110.0"
+    "vscode": "^1.104.0"
   },
   "categories": [
     "Other"
@@ -236,7 +236,7 @@
   "devDependencies": {
     "@types/mocha": "^10.0.10",
     "@types/node": "25.x",
-    "@types/vscode": "^1.110.0",
+    "@types/vscode": "^1.104.0",
     "@typescript-eslint/eslint-plugin": "^8.58.0",
     "@typescript-eslint/parser": "^8.58.0",
     "@vscode/test-cli": "^0.0.12",

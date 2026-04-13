@@ -6,6 +6,11 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [0.2.15] - 2026-04-13
+
+### Changed
+- Lowered the minimum VS Code engine requirement from 1.110.0 to 1.104.0 for broader compatibility.
+
 ## [0.2.14] - 2026-02-13
 
 ### Changed
@@ -211,7 +216,12 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 - Default keybindings and settings for paths, args, preArgs, and enable toggles.
 - Editor context and title menu entries when there is a selection.
 
-[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.9...HEAD
+[Unreleased]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.15...HEAD
+[0.2.15]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.14...v0.2.15
+[0.2.14]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.13...v0.2.14
+[0.2.13]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.12...v0.2.13
+[0.2.12]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.10...v0.2.12
+[0.2.10]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.9...v0.2.10
 [0.2.9]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.8...v0.2.9
 [0.2.8]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.7...v0.2.8
 [0.2.7]: https://github.com/hsaito/regex-jgs-launcher/compare/v0.2.6...v0.2.7
