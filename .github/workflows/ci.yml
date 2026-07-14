@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [18, 20]
+        node-version: [22]
     
     runs-on: ${{ matrix.os }}
     
@@ -52,8 +52,8 @@ jobs:
       if: runner.os != 'Linux'
       run: npm test
     
-    - name: Test packaging (Ubuntu only, Node 20)
-      if: matrix.os == 'ubuntu-latest' && matrix.node-version == '20'
+    - name: Test packaging (Ubuntu only, Node 22)
+      if: matrix.os == 'ubuntu-latest' && matrix.node-version == '22'
       run: |
         npm install -g @vscode/vsce
         vsce package --no-yarn
@@ -69,7 +69,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20'
+        node-version: '22'
         cache: 'npm'
     
     - name: Install dependencies
